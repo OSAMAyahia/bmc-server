@@ -59,15 +59,16 @@ const seedTranslations = async () => {
       data: {
         ar: {
           label: 'من نحن',
-          title: 'شركة برمجيات',
-          titleSpan: 'بطموح لا حدود له',
-          desc1: 'BMC Digital شركة سعودية متخصصة في تطوير البرمجيات وتحويل الأعمال رقمياً. نجمع بين الإبداع التقني والفهم العميق لاحتياجات السوق المحلية والعالمية.',
-          desc2: 'فريقنا من المطورين والمصممين المحترفين يعمل على بناء حلول رقمية تدوم وتنمو مع أعمالك.',
+          title: 'البنية الماسية',
+          titleSpan: 'Digital',
+          desc1: 'البنية الماسية Digital هي شركة متخصصة في تقديم حلول رقمية متكاملة تساعد الشركات والمتاجر الالكترونية في مختلف الانشطة على الانطلاق بثبات وتحقيق حضور قوي في السوق. نطوّر لك موقعك الإلكتروني أو متجرك باحترافية عالية سواء برمجة خاصة بالكامل أو عبر أقوى المنصات مع تصميمات عصرية وتجربة استخدام سلسة وسريعة. كما نقدّم خدمات تطوير تطبيقات iOS وAndroid، بالإضافة إلى إدارة الحملات الإعلانية الممولة على جميع منصات التواصل ومحرك البحث جوجل، وتحليل الأداء لضمان أفضل النتائج. نهتم أيضًا بهوية نجاحك من خلال تصميم الهوية البصرية كاملة، وإدارة حسابات السوشيال ميديا، وصناعة محتوى احترافي يعكس قوة العلامة التجارية ويجذب العملاء. البنية الماسية Digital… الفكرة عليك، والتنفيذ علينا.',
+          desc2: 'نقدّم خدماتنا في دولة أجنبية وثلاث دول عربية مع تركيز مستمر على الجودة والنتائج الفعلية.',
           stats: [
-            { value: '+50', label: 'مشروع منجز' },
-            { value: '+30', label: 'عميل سعيد' },
+            { value: '4', label: 'نقدّم خدماتنا في دولة أجنبية وثلاث دول عربية' },
+            { value: '548', label: 'مشروع مكتمل' },
+            { value: '24/7', label: 'دعم فني' },
+            { value: '460', label: 'عميل راضٍ' },
             { value: '5', label: 'سنوات خبرة' },
-            { value: '98%', label: 'نسبة رضا العملاء' },
           ],
         },
         en: {
@@ -93,9 +94,9 @@ const seedTranslations = async () => {
           title: 'كل ما تحتاجه',
           titleSpan: 'تحت سقف واحد',
           items: [
-            { title: 'تطوير المواقع', desc: 'مواقع ويب احترافية وسريعة بتقنيات React وNext.js مع تحسين محركات البحث وتجربة مستخدم استثنائية.' },
-            { title: 'تطبيقات الجوال', desc: 'تطبيقات iOS وAndroid بأداء عالٍ وتجربة مستخدم سلسة باستخدام React Native وFlutter.' },
-            { title: 'المتاجر الإلكترونية', desc: 'منصات تجارة إلكترونية متكاملة مع بوابات دفع آمنة وإدارة المخزون وتجربة تسوق مميزة.' },
+            { title: 'تطوير المواقع الإلكترونية', desc: 'في البنية الماسية Digital نطوّر مواقع إلكترونية احترافية وسريعة ومصممة خصيصًا لاحتياجات مشروعك.' },
+            { title: 'تطوير المتاجر الإلكترونية', desc: 'نقدّم في البنية الماسية Digital خدمة إنشاء وتطوير متاجر إلكترونية متكاملة تساعدك على بدء البيع أونلاين بثبات وزيادة مبيعاتك بشكل فعلي.' },
+            { title: 'تطوير التطبيقات', desc: 'في البنية الماسية Digital نطوّر تطبيقات iOS وAndroid ببرمجة احترافية وتصميم حديث يلائم طبيعة نشاطك التجاري ويعكس هوية مشروعك.' },
             { title: 'أنظمة ERP', desc: 'أنظمة تخطيط موارد المؤسسة المخصصة لإدارة العمليات والحسابات والموارد البشرية بكفاءة عالية.' },
             { title: 'تصميم UI/UX', desc: 'تصاميم جذابة وواجهات مستخدم بديهية تعكس هوية علامتك التجارية وتحقق أهدافك.' },
             { title: 'حلول الذكاء الاصطناعي', desc: 'دمج تقنيات الذكاء الاصطناعي في منتجاتك — chatbots، تحليل البيانات، والتوصيات الذكية.' },
@@ -348,7 +349,7 @@ const seedFaqs = async () => {
     },
   ];
 
-  await Faq.insertMany(faqs);
+  await Faq.insertMany(faqs.map((faq) => ({ ...faq, visible: true })));
   console.log('✅ FAQs seeded');
 };
 
@@ -391,7 +392,7 @@ const seedServices = async () => {
       icon: '🌐',
       titleAr: 'تطوير المواقع الإلكترونية',
       titleEn: 'Website Development',
-      descAr: 'نبني مواقع احترافية عالية الأداء تعكس هوية علامتك التجارية وتحقق أهدافك التجارية.',
+      descAr: 'في البنية الماسية Digital نطوّر مواقع إلكترونية احترافية وسريعة ومصممة خصيصًا لاحتياجات مشروعك.',
       descEn: 'We build professional, high-performance websites that reflect your brand identity and achieve your business goals.',
       featuresAr: ['تصميم متجاوب مع كل الأجهزة', 'سرعة تحميل فائقة', 'تحسين محركات البحث SEO', 'لوحة إدارة سهلة الاستخدام'],
       featuresEn: ['Responsive on all devices', 'Lightning fast loading', 'SEO optimization', 'Easy-to-use admin panel'],
@@ -399,7 +400,7 @@ const seedServices = async () => {
       detailTitleEn: 'Web',
       detailTitleSpanAr: 'المواقع الإلكترونية',
       detailTitleSpanEn: 'Development',
-      detailDescAr: 'نبني مواقع احترافية عالية الأداء بتقنيات React و Next.js مع تحسين محركات البحث وتجربة مستخدم استثنائية. كل موقع نصممه فريد ومُخصص لاحتياجات عملك.',
+      detailDescAr: 'في البنية الماسية Digital نطوّر مواقع إلكترونية احترافية وسريعة ومصممة خصيصًا لاحتياجات مشروعك.\n\nنركز على تجربة مستخدم ممتازة، تصميم عصري، وأداء عالي يساعدك على جذب العملاء وتحقيق نتائج فعلية.\n\nتشمل الخدمة:\n\n• تصميم واجهات حديثة ومتجاوبة.\n• برمجة احترافية قابلة للتطوير.\n• تحسين السرعة وتهيئة SEO.\n• ربط الموقع بالأنظمة الخارجية.\n• دعم وصيانة مستمرة.\n\nالبنية الماسية Digital… موقع احترافي يرفع حضورك الرقمي ويعزز نمو مشروعك.',
       detailDescEn: 'We build professional, high-performance websites using React and Next.js with SEO optimization and exceptional UX. Every site we design is unique and tailored to your business needs.',
       benefitsAr: [
         { title: 'أداء فائق السرعة', desc: 'مواقع تتحمل في أقل من ثانية مع تحسين كامل للأداء وCore Web Vitals.' },
@@ -420,7 +421,7 @@ const seedServices = async () => {
       icon: '🛒',
       titleAr: 'تطوير المتاجر الإلكترونية',
       titleEn: 'E-Commerce Development',
-      descAr: 'متاجر إلكترونية متكاملة مع بوابات دفع آمنة وتجربة تسوق استثنائية تزيد مبيعاتك.',
+      descAr: 'نقدّم في البنية الماسية Digital خدمة إنشاء وتطوير متاجر إلكترونية متكاملة تساعدك على بدء البيع أونلاين بثبات وزيادة مبيعاتك بشكل فعلي.',
       descEn: 'Full e-commerce solutions with secure payment gateways and exceptional shopping experiences that boost your sales.',
       featuresAr: ['بوابات دفع متعددة', 'إدارة المخزون', 'تقارير المبيعات', 'تجربة مستخدم محسّنة'],
       featuresEn: ['Multiple payment gateways', 'Inventory management', 'Sales reports', 'Optimized UX'],
@@ -428,7 +429,7 @@ const seedServices = async () => {
       detailTitleEn: 'E-Commerce',
       detailTitleSpanAr: 'إلكترونية متكاملة',
       detailTitleSpanEn: 'Solutions',
-      detailDescAr: 'نبني متاجر إلكترونية متكاملة مع بوابات دفع آمنة وإدارة المخزون وتجربة تسوق مميزة تزيد من مبيعاتك وتوسع قاعدة عملائك.',
+      detailDescAr: 'نقدّم في البنية الماسية Digital خدمة إنشاء وتطوير متاجر إلكترونية متكاملة تساعدك على بدء البيع أونلاين بثبات وزيادة مبيعاتك بشكل فعلي.\n\nنقوم ببناء متجر سريع، آمن، ومتجاوب، سواء ببرمجة خاصة أو عبر منصات مثل سلة وشوبيفاي، مع تصميم احترافي وتجربة شراء سلسة للعملاء.\n\nتشمل الخدمة:\n\n• تصميم متجر متكامل ومتجاوب مع جميع الأجهزة.\n• برمجة مخصصة أو إعداد كامل على سلة/شوبفاي.\n• لوحة تحكم احترافية سهلة الاستخدام.\n• ربط وسائل الدفع والشحن.\n• إعداد نظام الطلبات والمخزون.\n• تحسين السرعة وتجربة المستخدم.\n• تهيئة المتجر لمحركات البحث (SEO).\n• دعم فني وصيانة مستمرة.\n\nالبنية الماسية Digital… متجرك جاهز للبيع ويعمل بكفاءة منذ اليوم الأول.',
       detailDescEn: 'We build complete e-commerce stores with secure payment gateways, inventory management, and an exceptional shopping experience that boosts your sales and expands your customer base.',
       benefitsAr: [
         { title: 'بوابات دفع آمنة', desc: 'دمج مع أبرز بوابات الدفع المحلية والعالمية بأمان عالي.' },
@@ -449,7 +450,7 @@ const seedServices = async () => {
       icon: '📱',
       titleAr: 'تطوير التطبيقات',
       titleEn: 'Mobile App Development',
-      descAr: 'تطبيقات جوال احترافية لنظامي iOS و Android تمنح مستخدميك تجربة استثنائية.',
+      descAr: 'في البنية الماسية Digital نطوّر تطبيقات iOS وAndroid ببرمجة احترافية وتصميم حديث يلائم طبيعة نشاطك التجاري ويعكس هوية مشروعك.',
       descEn: 'Professional mobile apps for iOS and Android that give your users an exceptional experience.',
       featuresAr: ['iOS و Android', 'أداء عالي', 'واجهة مستخدم جذابة', 'تكامل مع الخدمات الخارجية'],
       featuresEn: ['iOS & Android', 'High performance', 'Attractive UI', 'Third-party integration'],
@@ -457,7 +458,7 @@ const seedServices = async () => {
       detailTitleEn: 'Mobile',
       detailTitleSpanAr: 'التطبيقات',
       detailTitleSpanEn: 'Apps',
-      detailDescAr: 'تطبيقات جوال احترافية لنظامي iOS و Android باستخدام React Native و Flutter. أداء عالي وتجربة مستخدم سلسة تمنح عملاءك وصولاً سهلاً لخدماتك.',
+      detailDescAr: 'في البنية الماسية Digital نطوّر تطبيقات iOS وAndroid ببرمجة احترافية وتصميم حديث يلائم طبيعة نشاطك التجاري ويعكس هوية مشروعك.\n\nنركز على بناء تطبيق سريع، ثابت، وسهل الاستخدام، يساهم في زيادة المبيعات وتقديم تجربة سلسة لعملائك.\n\nتشمل الخدمة:\n\n• تحليل الفكرة وتحويلها إلى تجربة مستخدم واضحة.\n• تصميم واجهات UI/UX عصرية ومتوافقة مع الهوية البصرية.\n• برمجة تطبيقات احترافية قابلة للتطوير والتوسع.\n• ربط التطبيق مع الأنظمة والمتاجر الإلكترونية.\n• نظام إشعارات متقدم وتحسين الأداء.\n• اختبار شامل وضمان جودة التطبيق.\n\nالبنية الماسية Digital… نحول فكرتك إلى تطبيق يعمل ويكبر مع مشروعك.',
       detailDescEn: 'Professional mobile apps for iOS and Android using React Native and Flutter. High performance and smooth UX that gives your customers easy access to your services.',
       benefitsAr: [
         { title: 'أداء أصلي', desc: 'تطبيقات بأداء قريب من التطبيقات الأصلية على iOS و Android.' },

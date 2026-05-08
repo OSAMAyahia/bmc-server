@@ -5,6 +5,7 @@ const serviceSchema = new mongoose.Schema({
   icon: { type: String, default: '🌐' },
   titleAr: { type: String, required: true },
   titleEn: { type: String, required: true },
+  cardImage: { type: String, default: '' },
   descAr: { type: String, required: true },
   descEn: { type: String, required: true },
   featuresAr: [{ type: String }],

@@ -592,7 +592,22 @@ const seedServices = async () => {
     },
   ];
 
-  await Service.insertMany(services);
+  const serviceImages = {
+    'web-development': 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1400&q=80',
+    'e-commerce-website-development': 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1400&q=80',
+    'mobile-app-development': 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1400&q=80',
+    'erp-systems': 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1400&q=80',
+    'ui-ux-design': 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1400&q=80',
+    'ai-solutions': 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1400',
+    'tech-consulting': 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1400&q=80',
+  };
+
+  const servicesWithImages = services.map((service) => ({
+    ...service,
+    cardImage: serviceImages[service.slug] || '',
+  }));
+
+  await Service.insertMany(servicesWithImages);
   console.log('✅ Services seeded');
 };
 

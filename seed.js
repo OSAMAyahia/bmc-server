@@ -41,16 +41,16 @@ const seedTranslations = async () => {
           title: 'نبني',
           titleSpan: 'مستقبلك الرقمي',
           subtitle: 'حلول برمجية متكاملة — مواقع، تطبيقات، أنظمة ERP، وتجارة إلكترونية مصممة لتنمية أعمالك.',
-          cta: 'ابدأ مشروعك',
-          ctaSecondary: 'أعمالنا',
+          cta: 'اطلب عرض سعر',
+          ctaSecondary: 'استكشف خدماتنا',
         },
         en: {
           badge: 'Your Trusted Digital Partner',
           title: 'We Build Your',
           titleSpan: 'Digital Future',
           subtitle: 'Full-stack software solutions — websites, mobile apps, ERP systems, and e-commerce designed to grow your business.',
-          cta: 'Start Your Project',
-          ctaSecondary: 'Our Work',
+          cta: 'Request a Quote',
+          ctaSecondary: 'Explore Services',
         },
       },
     },
@@ -59,9 +59,9 @@ const seedTranslations = async () => {
       data: {
         ar: {
           label: 'من نحن',
-          title: 'البنية الماسية',
-          titleSpan: 'Digital',
-          desc1: 'البنية الماسية Digital هي شركة متخصصة في تقديم حلول رقمية متكاملة تساعد الشركات والمتاجر الالكترونية في مختلف الانشطة على الانطلاق بثبات وتحقيق حضور قوي في السوق. نطوّر لك موقعك الإلكتروني أو متجرك باحترافية عالية سواء برمجة خاصة بالكامل أو عبر أقوى المنصات مع تصميمات عصرية وتجربة استخدام سلسة وسريعة. كما نقدّم خدمات تطوير تطبيقات iOS وAndroid، بالإضافة إلى إدارة الحملات الإعلانية الممولة على جميع منصات التواصل ومحرك البحث جوجل، وتحليل الأداء لضمان أفضل النتائج. نهتم أيضًا بهوية نجاحك من خلال تصميم الهوية البصرية كاملة، وإدارة حسابات السوشيال ميديا، وصناعة محتوى احترافي يعكس قوة العلامة التجارية ويجذب العملاء. البنية الماسية Digital… الفكرة عليك، والتنفيذ علينا.',
+          title: 'شريكك',
+          titleSpan: 'في التحول الرقمي',
+          desc1: 'البنية الماسية الرقمية هي شركة متخصصة في تقديم حلول رقمية متكاملة تساعد الشركات والمتاجر الالكترونية في مختلف الانشطة على الانطلاق بثبات وتحقيق حضور قوي في السوق. نطوّر لك موقعك الإلكتروني أو متجرك باحترافية عالية سواء برمجة خاصة بالكامل أو عبر أقوى المنصات مع تصميمات عصرية وتجربة استخدام سلسة وسريعة. كما نقدّم خدمات تطوير تطبيقات iOS وAndroid، بالإضافة إلى إدارة الحملات الإعلانية الممولة على جميع منصات التواصل ومحرك البحث جوجل، وتحليل الأداء لضمان أفضل النتائج. نهتم أيضًا بهوية نجاحك من خلال تصميم الهوية البصرية كاملة، وإدارة حسابات السوشيال ميديا، وصناعة محتوى احترافي يعكس قوة العلامة التجارية ويجذب العملاء. البنية الماسية Digital… الفكرة عليك، والتنفيذ علينا.',
           desc2: 'نقدّم خدماتنا في دولة أجنبية وثلاث دول عربية مع تركيز مستمر على الجودة والنتائج الفعلية.',
           stats: [
             { value: '4', label: 'نقدّم خدماتنا في دولة أجنبية وثلاث دول عربية' },
@@ -73,8 +73,8 @@ const seedTranslations = async () => {
         },
         en: {
           label: 'About Us',
-          title: 'A Software Company',
-          titleSpan: 'With Limitless Ambition',
+          title: 'Your Partner',
+          titleSpan: 'In Digital Transformation',
           desc1: 'BMC Digital is a Saudi software company specializing in digital transformation. We combine technical creativity with a deep understanding of local and global market needs.',
           desc2: 'Our team of professional developers and designers builds digital solutions that last and grow with your business.',
           stats: [
@@ -91,8 +91,8 @@ const seedTranslations = async () => {
       data: {
         ar: {
           label: 'خدماتنا',
-          title: 'كل ما تحتاجه',
-          titleSpan: 'تحت سقف واحد',
+          title: 'حلول رقمية',
+          titleSpan: 'مصممة لنمو أعمالك',
           items: [
             { title: 'تطوير المواقع الإلكترونية', desc: 'في البنية الماسية Digital نطوّر مواقع إلكترونية احترافية وسريعة ومصممة خصيصًا لاحتياجات مشروعك.' },
             { title: 'تطوير المتاجر الإلكترونية', desc: 'نقدّم في البنية الماسية Digital خدمة إنشاء وتطوير متاجر إلكترونية متكاملة تساعدك على بدء البيع أونلاين بثبات وزيادة مبيعاتك بشكل فعلي.' },
@@ -105,8 +105,8 @@ const seedTranslations = async () => {
         },
         en: {
           label: 'Our Services',
-          title: 'Everything You Need',
-          titleSpan: 'Under One Roof',
+          title: 'Digital Solutions',
+          titleSpan: 'Designed to Grow Your Business',
           items: [
             { title: 'Web Development', desc: 'Professional, fast websites built with React and Next.js with SEO optimization and exceptional UX.' },
             { title: 'Mobile Apps', desc: 'High-performance iOS and Android apps with smooth UX using React Native and Flutter.' },
@@ -124,8 +124,8 @@ const seedTranslations = async () => {
       data: {
         ar: {
           label: 'أعمالنا',
-          title: 'مشاريع',
-          titleSpan: 'نفخر بها',
+          title: 'نتائج واقعية',
+          titleSpan: 'من أفكار تحولت إلى منتجات',
           items: [
             { title: 'منصة تجارة إلكترونية', category: 'متجر إلكتروني', tag: 'React · Node.js · MongoDB' },
             { title: 'نظام ERP متكامل', category: 'برمجيات مؤسسية', tag: 'React · PostgreSQL · Docker' },
@@ -137,8 +137,8 @@ const seedTranslations = async () => {
         },
         en: {
           label: 'Our Work',
-          title: 'Projects We',
-          titleSpan: 'Are Proud Of',
+          title: 'Real Outcomes',
+          titleSpan: 'From Ideas Turned Into Products',
           items: [
             { title: 'E-Commerce Platform', category: 'Online Store', tag: 'React · Node.js · MongoDB' },
             { title: 'Integrated ERP System', category: 'Enterprise Software', tag: 'React · PostgreSQL · Docker' },
@@ -155,8 +155,8 @@ const seedTranslations = async () => {
       data: {
         ar: {
           label: 'منهجيتنا',
-          title: 'كيف نعمل',
-          titleSpan: 'معك؟',
+          title: 'رحلة واضحة',
+          titleSpan: 'من الفكرة إلى الإطلاق',
           steps: [
             { num: '01', title: 'الاستماع والتحليل', desc: 'نبدأ بفهم عميق لأهدافك وتحدياتك وجمهورك المستهدف.' },
             { num: '02', title: 'التخطيط والتصميم', desc: 'نضع خطة واضحة ونصمم النماذج الأولية للحصول على موافقتك.' },
@@ -167,8 +167,8 @@ const seedTranslations = async () => {
         },
         en: {
           label: 'Our Process',
-          title: 'How We',
-          titleSpan: 'Work With You',
+          title: 'A Clear Journey',
+          titleSpan: 'From Idea to Launch',
           steps: [
             { num: '01', title: 'Listen & Analyze', desc: 'We start with a deep understanding of your goals, challenges, and target audience.' },
             { num: '02', title: 'Plan & Design', desc: 'We create a clear plan and design prototypes for your approval.' },
@@ -184,13 +184,13 @@ const seedTranslations = async () => {
       data: {
         ar: {
           label: 'تقنياتنا',
-          title: 'نعمل بـ',
-          titleSpan: 'أفضل الأدوات',
+          title: 'تقنيات موثوقة',
+          titleSpan: 'لبناء منتجات قابلة للنمو',
         },
         en: {
           label: 'Our Tech Stack',
-          title: 'We Work With',
-          titleSpan: 'The Best Tools',
+          title: 'Trusted Technologies',
+          titleSpan: 'For Scalable Products',
         },
       },
     },
@@ -199,27 +199,27 @@ const seedTranslations = async () => {
       data: {
         ar: {
           label: 'تواصل معنا',
-          title: 'ابدأ',
-          titleSpan: 'مشروعك اليوم',
+          title: 'جاهز',
+          titleSpan: 'لإطلاق مشروعك؟',
           subtitle: 'أخبرنا عن مشروعك وسنتواصل معك خلال 24 ساعة',
           namePlaceholder: 'اسمك الكريم',
           emailPlaceholder: 'بريدك الإلكتروني',
           msgPlaceholder: 'أخبرنا عن مشروعك...',
           btn: 'أرسل رسالتك',
           phone: '+966 50 000 0000',
-          email: 'hello@bmc-digital.sa',
+          email: 'info@bmc-digital.sa',
         },
         en: {
           label: 'Contact Us',
-          title: 'Start Your',
-          titleSpan: 'Project Today',
+          title: 'Ready to',
+          titleSpan: 'Launch Your Project?',
           subtitle: "Tell us about your project and we'll reach out within 24 hours",
           namePlaceholder: 'Your Name',
           emailPlaceholder: 'Your Email',
           msgPlaceholder: 'Tell us about your project...',
           btn: 'Send Message',
           phone: '+966 50 000 0000',
-          email: 'hello@bmc-digital.sa',
+          email: 'info@bmc-digital.sa',
         },
       },
     },

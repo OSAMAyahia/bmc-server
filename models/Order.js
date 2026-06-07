@@ -5,6 +5,8 @@ const orderSchema = new mongoose.Schema({
   phone: { type: String, required: true },
   contact: { type: String, required: true },
   service: { type: String, required: true },
+  formType: { type: String, default: '' },
+  fields: { type: mongoose.Schema.Types.Mixed, default: {} },
   details: { type: String, required: true },
   extra: { type: String, default: '' },
   status: { type: String, enum: ['new', 'in_progress', 'completed', 'cancelled'], default: 'new' },

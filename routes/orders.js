@@ -15,11 +15,13 @@ router.get('/', async (req, res) => {
 // POST new order
 router.post('/', async (req, res) => {
   try {
-    const { name, phone, contact, service, details, extra } = req.body;
+    const { name, phone, contact, service, details, extra, formType, fields } = req.body;
     if (!name || !phone || !contact || !service || !details) {
       return res.status(400).json({ error: 'name, phone, contact, service and details are required' });
     }
-    const order = await Order.create({ name, phone, contact, service, details, extra });
+    const safeFields = fields && typeof fields === 'object' && !Array.isArray(fields) ? fields : {};
+    const normalizedFormType = typeof formType === 'string' ? formType : '';
+    const order = await Order.create({ name, phone, contact, service, formType: normalizedFormType, fields: safeFields, details, extra });
     res.status(201).json(order);
   } catch (err) {
     res.status(500).json({ error: err.message });

@@ -20,6 +20,8 @@ const app = express();
 // Middleware
 const allowedOrigins = [
   'https://bmc-digital-front-three.vercel.app',
+  'https://www.binyah-masiyah-digital.sa',
+  'https://binyah-masiyah-digital.sa',
   'http://localhost:5173',
   'http://127.0.0.1:5173',
 ];
@@ -29,7 +31,7 @@ app.use(cors({
     // Allow tools like Postman/curl with no Origin header
     if (!origin) return callback(null, true);
     if (allowedOrigins.includes(origin)) return callback(null, true);
-    return callback(new Error('Not allowed by CORS'));
+    return callback(null, false);
   },
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
   credentials: true,

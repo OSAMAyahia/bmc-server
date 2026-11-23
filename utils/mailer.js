@@ -5,7 +5,8 @@ const nodemailer = require('nodemailer');
 async function notifyNewMessage({ name, email, message }) {
   const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, NOTIFY_TO } = process.env;
   if (!SMTP_HOST || !SMTP_USER || !SMTP_PASS || !NOTIFY_TO) {
-    console.log('[mailer] SMTP not configured, skipping notification');
+    const missing = ['SMTP_HOST','SMTP_USER','SMTP_PASS','NOTIFY_TO'].filter(k => !process.env[k]);
+    console.log('[mailer] SMTP not configured, missing:', missing.join(','));
     return;
   }
   try {
@@ -16,7 +17,7 @@ async function notifyNewMessage({ name, email, message }) {
       secure: port === 465,
       auth: { user: SMTP_USER, pass: SMTP_PASS },
     });
-    await transporter.sendMail({
+    const info = await transporter.sendMail({
       from: `"BMC Website" <${SMTP_USER}>`,
       to: NOTIFY_TO,
       replyTo: email,
@@ -24,7 +25,7 @@ async function notifyNewMessage({ name, email, message }) {
       text: `الاسم: ${name}\nالإيميل: ${email}\n\n${message}`,
     });
   } catch (err) {
-    console.error('[mailer] failed:', err.message);
+    console.error('[mailer] failed:', err.code, err.responseCode, err.message);
   }
 }
 

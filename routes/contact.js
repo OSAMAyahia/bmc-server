@@ -21,7 +21,7 @@ router.post('/', async (req, res) => {
       return res.status(400).json({ error: 'Name, email and message are required' });
     }
     const msg = await ContactMessage.create({ name, email, message });
-    notifyNewMessage({ name, email, message }); // fire-and-forget
+    await notifyNewMessage({ name, email, message }); // awaited so serverless hosts (Vercel) do not cut it off
     res.status(201).json(msg);
   } catch (err) {
     res.status(500).json({ error: err.message });

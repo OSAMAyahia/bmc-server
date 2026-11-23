@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const ContactMessage = require('../models/ContactMessage');
+const { notifyNewMessage } = require('../utils/mailer');
 
 // GET all messages
 router.get('/', async (req, res) => {
@@ -20,6 +21,7 @@ router.post('/', async (req, res) => {
       return res.status(400).json({ error: 'Name, email and message are required' });
     }
     const msg = await ContactMessage.create({ name, email, message });
+    notifyNewMessage({ name, email, message }); // fire-and-forget
     res.status(201).json(msg);
   } catch (err) {
     res.status(500).json({ error: err.message });

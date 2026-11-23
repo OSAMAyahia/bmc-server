@@ -1,14 +1,7 @@
 const nodemailer = require('nodemailer');
 
-function buildMail({ name, email, message }) {
-  return {
-    subject: `رسالة جديدة من ${name}`,
-    text: `الاسم: ${name}\nالإيميل: ${email}\n\n${message}`,
-  };
-}
-
 // Preferred: Resend HTTPS API (reliable from serverless hosts).
-async function sendViaResend({ name, email, message }) {
+async function sendViaResend({ subject, text, replyTo }) {
   const from = process.env.MAIL_FROM || process.env.SMTP_USER;
   const to = process.env.NOTIFY_TO.split(',').map((s) => s.trim()).filter(Boolean);
   const res = await fetch('https://api.resend.com/emails', {
@@ -20,8 +13,9 @@ async function sendViaResend({ name, email, message }) {
     body: JSON.stringify({
       from: `BMC Website <${from}>`,
       to,
-      reply_to: email,
-      ...buildMail({ name, email, message }),
+      ...(replyTo ? { reply_to: replyTo } : {}),
+      subject,
+      text,
     }),
   });
   const body = await res.text();
@@ -30,7 +24,7 @@ async function sendViaResend({ name, email, message }) {
 }
 
 // Fallback: SMTP (Gmail / Zoho / ...).
-async function sendViaSmtp({ name, email, message }) {
+async function sendViaSmtp({ subject, text, replyTo }) {
   const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, NOTIFY_TO } = process.env;
   const port = Number(SMTP_PORT) || 465;
   const transporter = nodemailer.createTransport({
@@ -42,14 +36,15 @@ async function sendViaSmtp({ name, email, message }) {
   const info = await transporter.sendMail({
     from: `"BMC Website" <${SMTP_USER}>`,
     to: NOTIFY_TO,
-    replyTo: email,
-    ...buildMail({ name, email, message }),
+    ...(replyTo ? { replyTo } : {}),
+    subject,
+    text,
   });
   console.log('[mailer] sent via SMTP:', info.messageId, 'accepted:', info.accepted.join(','), 'rejected:', info.rejected.join(','));
 }
 
-// Never throws: a mail failure must not break saving the message.
-async function notifyNewMessage(data) {
+// Never throws: a mail failure must not break saving the record.
+async function sendMail(data) {
   if (!process.env.NOTIFY_TO) {
     console.log('[mailer] NOTIFY_TO missing, skipping notification');
     return;
@@ -67,4 +62,33 @@ async function notifyNewMessage(data) {
   }
 }
 
-module.exports = { notifyNewMessage };
+function notifyNewMessage({ name, email, message }) {
+  return sendMail({
+    subject: `رسالة جديدة من ${name}`,
+    text: `الاسم: ${name}\nالإيميل: ${email}\n\n${message}`,
+    replyTo: email,
+  });
+}
+
+function notifyNewOrder({ name, phone, service, details, extra, fields }) {
+  const fieldLines = fields && typeof fields === 'object'
+    ? Object.entries(fields)
+        .map(([k, v]) => `${k}: ${Array.isArray(v) ? v.join(', ') : v}`)
+        .join('\n')
+    : '';
+  const parts = [
+    `الاسم: ${name}`,
+    `الجوال: ${phone}`,
+    `الخدمة: ${service}`,
+    '',
+    `التفاصيل:\n${details}`,
+  ];
+  if (extra) parts.push('', `معلومات إضافية:\n${extra}`);
+  if (fieldLines) parts.push('', `حقول الخدمة:\n${fieldLines}`);
+  return sendMail({
+    subject: `طلب خدمة جديد: ${service} - ${name}`,
+    text: parts.join('\n'),
+  });
+}
+
+module.exports = { notifyNewMessage, notifyNewOrder };

@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Order = require('../models/Order');
+const { notifyNewOrder } = require('../utils/mailer');
 
 // GET all orders
 router.get('/', async (req, res) => {
@@ -22,6 +23,7 @@ router.post('/', async (req, res) => {
     const safeFields = fields && typeof fields === 'object' && !Array.isArray(fields) ? fields : {};
     const normalizedFormType = typeof formType === 'string' ? formType : '';
     const order = await Order.create({ name, phone, contact, service, formType: normalizedFormType, fields: safeFields, details, extra });
+    await notifyNewOrder({ name, phone, service, details, extra, fields: safeFields }); // awaited for serverless
     res.status(201).json(order);
   } catch (err) {
     res.status(500).json({ error: err.message });
